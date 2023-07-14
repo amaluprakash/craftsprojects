@@ -1,0 +1,1300 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <!-- Basic -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <!-- Mobile Metas -->
+    <meta name="viewport" content="width=device-width, maximum-scale=1, initial-scale=1, user-scalable=0">
+
+    <!-- Site Metas -->
+    <title>prm</title>
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Site Icons -->
+    <link rel="shortcut icon" href="{% static 'images/favicon.ico' %}" type="image/x-icon" />
+    <link rel="apple-touch-icon" href="{%static 'images/apple-touch-icon.png' %}">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <!-- Site CSS -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <!-- Responsive CSS -->
+    <link rel="stylesheet" href="{% static 'css/responsive.css' %}">
+    <!-- color -->
+    <link id="changeable-colors" rel="stylesheet" href="{% static 'css/colors/orange.css' %}" />
+
+    <!-- Modernizer -->
+    <script src="{% static 'js/modernizer.js' %}"></script>
+
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <style>
+        /* Style The Dropdown Button */
+        .dropbtn {
+          /* background-color: #4CAF50; */
+          /* color: white; */
+          
+          font-size: 6px;
+          border: none;
+          cursor: pointer;
+        }
+        
+        /* The container <div> - needed to position the dropdown content */
+        .dropdown {
+            margin-top: 36%;
+          position: relative;
+          display: inline-block;
+        }
+        
+        /* Dropdown Content (Hidden by Default) */
+        .dropdown-content {
+          display: none;
+          position: absolute;
+          background-color: #1a1212;
+          min-width: 160px;
+          box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+          /* z-index: 1; */
+        }
+        
+        /* Links inside the dropdown */
+        .dropdown-content a {
+          color: black;
+          /* padding: 12px 16px; */
+          text-decoration: none;
+          display: block;
+        }
+        
+        /* Change color of dropdown links on hover */
+        .dropdown-content a:hover {background-color: #130808}
+        
+        /* Show the dropdown menu on hover */
+        .dropdown:hover .dropdown-content {
+          display: block;
+        }
+        
+        /* Change the background color of the dropdown button when the dropdown content is shown */
+        .dropdown:hover .dropbtn {
+          background-color: #811410;
+        }
+        </style>
+
+        
+        <style>
+        .subnav {
+            float: left;
+            overflow: hidden;
+          }
+          
+          .subnav .subnavbtn {
+            font-size: 18px;  
+            border: none;
+            outline: none;
+            color: white;
+            padding: 14px 16px;
+            background-color: inherit;
+            font-family: inherit;
+            margin-top:22px;
+          }
+          
+          .navbar a:hover, .subnav:hover .subnavbtn {
+            background-color: rgb(141, 16, 5);
+          }
+          
+          .subnav-content {
+            
+            font-size: 10px;
+            display: none;
+            position: absolute;
+            left: 0;
+            background-color: rgb(37, 10, 8);
+            width: 100%;
+            z-index: 1;
+          }
+          
+          .subnav-content a {
+            margin-top:60px;
+            float: left;
+            color: white;
+            text-decoration: none;
+          }
+          
+          .subnav-content a:hover {
+            background-color: #eee;
+            color: black;
+          }
+          
+          .subnav:hover .subnav-content {
+            display: block;
+          }
+          </style>
+          <script>
+            function openNav() {
+              document.getElementById("myNav").style.height = "100%";
+            }
+            
+            function closeNav() {
+              document.getElementById("myNav").style.height = "0%";
+            }
+            </script>
+<style>
+.overlay {
+  height: 0%;
+  width: 100%;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  padding-left:50px;
+  padding-right:50px;
+  background-color: rgb(0,0,0);
+  background-color: rgba(0,0,0, 0.9);
+  overflow-y: hidden;
+  transition: 0.5s;
+}
+
+.overlay-content {
+  position: relative;
+  top: 25%;
+  width: 100%;
+  text-align: center;
+  margin-top:50px;
+}
+
+.overlay a {
+  padding-left: 8px;
+  text-decoration: none;
+  font-size: 26px;
+  color: #c5de0b;
+  display: block;
+  transition: 0.3s;
+}
+
+.overlay a:hover, .overlay a:focus {
+  color: #570909fe;
+}
+
+.overlay .closebtn {
+  position: absolute;
+  margin-top: -5px;
+  right: 45px;
+  font-size: 60px;
+}
+
+@media screen and (max-height: 450px) {
+  .overlay {overflow-y: auto;}
+  .overlay a {font-size: 20px}
+  .overlay .closebtn {
+  font-size: 40px;
+  top: 15px;
+  right: 35px;
+  }
+}
+            </style>
+</head>
+
+<body>
+    <div id="loader">
+        <div id="status"></div>
+    </div>
+    <div id="site-header">
+        <header id="header" class="header-block-top">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="main-menu">
+                        <!-- navbar -->
+                        <nav class="navbar navbar-default" id="mainNav">
+                            <div class="navbar-header">
+                                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                                    <span class="sr-only">Toggle navigation</span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                </button>
+                                <div class="logo">
+                                    <a class="navbar-brand js-scroll-trigger logo-header" href="{% url 'index'%}" style="padding-left:10px;">
+                                        <img src="{% static 'images/prmlogo.png' %}" alt="" width="300px;">
+                                    </a>
+                                </div>
+                            </div>
+                            <div id="navbar" class="navbar-collapse collapse">
+                                <ul class="nav navbar-nav navbar-right">
+                                    <li class="active"><a href="#banner">Home</a></li>
+                                    <li><a href="#about">About us</a></li>
+                                    <li><a href="#gallery">Gallery</a></li>
+                                    <div class="subnav">
+                                        <button class="subnavbtn" onclick="openNav()">Products <i class="fa fa-caret-down"></i></button>
+                                        <div class="subnav-content overlay" id="myNav" >
+                                            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                                            <a href="arathi">Arathi &nbsp;&nbsp;&nbsp;&nbsp;</a>
+                                    
+                                            <a href="vilakku">Vilakku &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+                                            <a href="bell">Bell &nbsp;&nbsp;&nbsp;&nbsp;</a>
+                                            <a href="statue">Brass statue &nbsp;&nbsp;&nbsp;&nbsp;</a>
+                                            <a href="para">Para / Edangazhi / Nazhi &nbsp;&nbsp;&nbsp;&nbsp;</a>
+                                            <a href="chain">Brass Chain/Hook/Washer Etc.&nbsp;&nbsp;&nbsp;&nbsp;</a>
+                                            <a href="gift">Gift Items&nbsp;&nbsp;&nbsp;&nbsp;</a>
+                                            <a href="house">Household Items
+                                                &nbsp;&nbsp;&nbsp;&nbsp;</a>
+
+                                            <a href="medal">Momento/Trophy/Medal
+                                                &nbsp;&nbsp;&nbsp;&nbsp;</a>
+                                            <!-- <a href="valkanadi">valkanadi &nbsp;&nbsp;&nbsp;&nbsp;</a> -->
+                                            <a href="music">Musical Item&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+                                            <a href="photo">Photo With/Without Frame  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+                                            <a href="plate">plate &nbsp;&nbsp;&nbsp;&nbsp;</a>
+                                            <!-- <a href="#">Wooden crafts&nbsp;&nbsp;&nbsp;&nbsp;</a> -->
+                                            <a href="polish">Polishing/Cleaning/Packing Items&nbsp;&nbsp;&nbsp;&nbsp;</a>
+                                            <a href="pooja">Pooja Items&nbsp;&nbsp;&nbsp;&nbsp;</a>
+                                            <a href="stand">stand&nbsp;&nbsp;&nbsp;&nbsp;</a>
+                                            <a href="temple">Temple items&nbsp;&nbsp;&nbsp;&nbsp;</a>
+                                            <a href="utensils">Utensils - Brass, Copper, Steel & Aluminium
+                                            &nbsp;&nbsp;&nbsp;&nbsp;</a>
+
+                                            <!-- <a href="#">Church bells&nbsp;&nbsp;&nbsp;&nbsp;</a> -->
+                                        </div>
+                                      </div>
+                                    
+                                    
+                                    <li><a href="#footer">Contact us</a></li>
+                                    <li><a href="all">All Products</a></li>
+                                    <li><a href="shop">Shop details</a></li>
+
+
+                                </ul>
+                            </div>
+                            <!-- end nav-collapse -->
+                        </nav>
+                        <!-- end navbar -->
+                    </div>
+                </div>
+                <!-- end row -->
+            </div>
+            <!-- end container-fluid -->
+        </header>
+        <!-- end header -->
+    </div>
+	<!-- end site-header -->
+	
+    <div id="banner" class="banner  ">
+        <div class="container pr">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="banner-static">
+                    <div class="banner-text">
+                        <div class="banner-cell">
+                            <h1>PRM <span class="typer" id="some-id" data-delay="200" data-delim=":" data-words="120 year old tradition : creations in bronze: creations in copper" ></span><span class="cursor" data-cursorDisplay="_" data-owner="some-id"></span></h1>
+                            <!-- <h2 style="color:yellow;">expertise in the field  of creations in bronze </h2>
+                            <h2 style="color:yellow;">expertise in the field  of creations in copper </h2> -->
+
+                            <p></p>
+                            <div class="book-btn">
+                                <!-- <a href="#reservation" class="table-btn hvr-underline-from-center">Contact Us</a> -->
+                            </div>
+                            <a href="#about">
+                                <div class="mouse"></div>
+                            </a>
+                        </div>
+                        <!-- end banner-cell -->
+                    </div>
+                    <!-- end banner-text -->
+                </div>
+                <!-- end banner-static -->
+            </div>
+            <!-- end col -->
+        </div>
+        <!-- end container -->
+    </div>
+    <!-- end banner -->
+
+    <div id="about" class="about-main pad-top-100 pad-bottom-100">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                    <div class="wow fadeIn" data-wow-duration="1s" data-wow-delay="0.1s">
+                        <h2 class="block-title"> About Us </h2>
+                        {% comment %} <p>PRM Metal crafts promoed by PRM Lakshmana iyer Associates,mannar having 118 years of excellence is completing its eleventh year at ernakulam.They are the largest and oldest manufacturer of bronze craft in kerala based at mannar,Alapuzha district </p> {% endcomment %}
+                        <p>PRM Metal Crafts Promoted by PRM  Lakshmana Iyer Associates  having 123 years of Excellence is completing its Fifteenth year at Ernakulam. They are the largest and oldest Manufacturer of Bronze craft in Kerala based at Mannar, Alapuzha District whose products are well known for its tradition and quality.<br><br>
+
+                            The revolutionary Product of PRM Metal crafts is the Vasthuvillaku launched in 2009 which is designed according to the traditional vastu sastra by visualizing all the five elements determining vastu  called Aadhara Sakthi, Moola prakriti, Aadhi Kurmam, Ananthan and prathivi(Earth). The belief is that Ananthan (Sarpam)is carrying the Earth since snake forms cannot be included in a lamp the same is represented by "Pavithra Kettu"in front of the lamp. The lamp is made in Panchaloha kootu which when lighted before sunrise believed to eradicate vastu dosha and other shortcomings happened during construction. The Lamp comes in four sizes based in "kol"measurement used for measuring Earth. One Kol is equivalent to 72 cms. The base model 24-cms costs Rs.3500/-, 36-cms Rs.7000/-, 54 cms Rs.17500/- and 72- cms Rs.35000/- including GST. Even though PRM is the only manufacturer for this design registered VASTHU VILAKKU so many duplicate forms have entered the market which shows the acceptance of this lamp  said K.Lakshminarayanan,owner of the shop.
+                            
+                        <br><br>PRM Metal crafts also deals with a wide range of products such as the original Aranmulla mirror, Shanku(both Edampiri and Valampiri), good collection of Statues in gold and Antique, Hand made Puja set items, Lakshmi lamp, para sets,  Pancha patra and Udharani, Thooku villaku, Thazhika kudam, Kavara and pathi lamps, Nadan kindi, Kalasa kudom in copper and brass, Deepasthamba lamps, varieties of items used in temples, polishing and exchange of old brass items etc. Mannar church bells are also famous for clarity and sweetness of sound. Hand made Urulis and big varpu used for cooking in marriage functions are also in great demand. We are also dealers of pithambari shining powder and their other products.</p>
+                            
+                    </div>
+                </div>
+                <!-- end col -->
+                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                    <div class="wow fadeIn" data-wow-duration="1s" data-wow-delay="0.1s">
+                        <div class="about-images">
+                            <a href="vasthu"><img class="about-main" src="{% static 'images/vasthu-vilakku.png' %}" alt="About Main Image"></a>
+                            <img class="about-inset" src="{% static 'images/stand mukkali.jpg' %}" alt="About Inset Image">
+                        </div>
+                    </div>
+                </div>
+                <!-- end col -->
+            </div>
+            <!-- end row -->
+        </div>
+        <!-- end container -->
+    </div>
+
+    <div class="special-menu pad-top-100 parallax">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="wow fadeIn" data-wow-duration="1s" data-wow-delay="0.1s">
+                        <h2 class="block-title color-white text-center"> PRODUCTS </h2>
+                        {% comment %} <h5 class="title-caption text-center"> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusm incididunt ut labore et dolore magna aliqua. Ut enim ad minim venia,nostrud exercitation ullamco. </h5> {% endcomment %}
+                    </div>
+                    <div class="special-box">
+                        <div id="owl-demo">
+                            <div class="item item-type-zoom">
+                                <a href="#" class="item-hover">
+                                    <div class="item-info">
+                                        <div class="headline">
+                                            NAZHI (HEAVY BRASS PARA) HANDMADE
+                                            {% comment %} <div class="line"></div>
+                                            <div class="dit-line">Lorem ipsum dolor sit amet, consectetur adip aliqua. Ut enim ad minim venia.</div> {% endcomment %}
+                                        </div>
+                                    </div>
+                                </a>
+                                <div class="item-img">
+                                    <img src="{% static 'images/nazhi.jpg' %}" alt="sp-menu">
+                                </div>
+                            </div>
+                            <div class="item item-type-zoom">
+                                <a href="#" class="item-hover">
+                                    <div class="item-info">
+                                        <div class="headline">
+                                            Traditional Kerala Brass Kindi - Kerala Handmade Vessel for Pooja
+                                            {% comment %} <div class="line"></div>
+                                            <div class="dit-line">Lorem ipsum dolor sit amet, consectetur adip aliqua. Ut enim ad minim venia.</div> {% endcomment %}
+                                        </div>
+                                    </div>
+                                </a>
+                                <div class="item-img">
+                                    <img src="{% static 'images/brass kindi.jpg' %}" alt="sp-menu">
+                                </div>
+                            </div>
+                            <div class="item item-type-zoom">
+                                <a href="#" class="item-hover">
+                                    <div class="item-info">
+                                        <div class="headline">
+                                            Brass Shanku Ganesha
+                                            {% comment %} <div class="line"></div>
+                                            <div class="dit-line">Lorem ipsum dolor sit amet, consectetur adip aliqua. Ut enim ad minim venia.</div> {% endcomment %}
+                                        </div>
+                                    </div>
+                                </a>
+                                <div class="item-img">
+                                    <img src="{% static 'images/brass shanku.jpg' %}" alt="sp-menu">
+                                </div>
+                            </div>
+                            <div class="item item-type-zoom">
+                                <a href="#" class="item-hover">
+                                    <div class="item-info">
+                                        <div class="headline">
+                                            Brass Ashtamangalya Vilakku/Changalavottom
+                                            {% comment %} <div class="line"></div>
+                                            <div class="dit-line">Lorem ipsum dolor sit amet, consectetur adip aliqua. Ut enim ad minim venia.</div> {% endcomment %}
+                                        </div>
+                                    </div>
+                                </a>
+                                <div class="item-img">
+                                    <img src="{% static 'images/astamagalyalamp.jpg' %}"  alt="sp-menu">
+                                </div>
+                            </div>
+                            <div class="item item-type-zoom">
+                                <a href="#" class="item-hover">
+                                    <div class="item-info">
+                                        <div class="headline">
+                                            Annapakshi Vilakku
+                                            {% comment %} <div class="line"></div>
+                                            <div class="dit-line">Lorem ipsum dolor sit amet, consectetur adip aliqua. Ut enim ad minim venia.</div> {% endcomment %}
+                                        </div>
+                                    </div>
+                                </a>
+                                <div class="item-img">
+                                    <img src="{% static 'images/annapakshiLamp.jpg' %}" alt="sp-menu">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end special-box -->
+                </div>
+                <!-- end col -->
+            </div>
+            <!-- end row -->
+        </div>
+        <!-- end container -->
+    </div>
+    <!-- end special-menu -->
+
+<div id="gallery" class="gallery-main pad-top-100 pad-bottom-100">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="wow fadeIn" data-wow-duration="1s" data-wow-delay="0.1s">
+                    <h2 class="block-title text-center">
+                    Our Gallery	
+                </h2>
+                    <p class="title-caption text-center">There are many variations of brass and copper products </p>
+                </div>
+                <div class="gal-container clearfix">
+                    <div class="col-md-8 col-sm-12 co-xs-12 gal-item">
+                        <div class="box">
+                            <a href="#" data-toggle="modal" data-target="#1">
+                                <img src="{% static 'images/galary1.jpg' %}" alt="" />
+                            </a>
+                            <div class="modal fade" id="1" tabindex="-1" role="dialog">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                                        <div class="modal-body">
+                                            <img src="{% static 'images/galary1.jpg' %}" alt="" />
+                                        </div>
+                                        <div class="col-md-12 description ">
+                                             <!-- <h4>Kalash represents abundance and wisdom. Hindu deities, including Lord Brahma, Lord Shiva, and Goddess Lakshmi, hold a Kalash in their hands.</h4>  -->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-6 co-xs-12 gal-item">
+                        <div class="box">
+                            <a href="#" data-toggle="modal" data-target="#2">
+                                <img src="{% static 'images/ashoka sthambam.jpg' %}" alt="" />
+                            </a>
+                            <div class="modal fade" id="2" tabindex="-1" role="dialog">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                                        <div class="modal-body">
+                                            <img src="{% static 'images/ashoka sthambam.jpg' %}" alt="" />
+                                        </div>
+                                        <div class="col-md-12 description">
+                                            {% comment %} <h4>This is the 2 one on my Gallery</h4> {% endcomment %}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-6 co-xs-12 gal-item">
+                        <div class="box">
+                            <a href="#" data-toggle="modal" data-target="#3">
+                                <img src="{% static 'images/aranmula.jpg' %}" alt="" />
+                            </a>
+                            <div class="modal fade" id="3" tabindex="-1" role="dialog">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                                        <div class="modal-body">
+                                            <img src="{% static 'images/aranmula.jpg' %}" alt="" />
+                                        </div>
+                                        <div class="col-md-12 description">
+                                            {% comment %} <h4>This is the 3 one on my Gallery</h4> {% endcomment %}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-6 co-xs-12 gal-item">
+                        <div class="box">
+                            <a href="#" data-toggle="modal" data-target="#4">
+                                <img src="{% static 'images/galary2.jpg' %}" alt="" />
+                            </a>
+                            <div class="modal fade" id="4" tabindex="-1" role="dialog">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                                        <div class="modal-body">
+                                            <img src="{% static 'images/galary2.jpg' %}" alt="" />
+                                        </div>
+                                        <div class="col-md-12 description">
+                                            {% comment %} <h4>This is the 4 one on my Gallery</h4> {% endcomment %}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-6 co-xs-12 gal-item">
+                        <div class="box">
+                            <a href="#" data-toggle="modal" data-target="#5">
+                                <img src="{% static 'images/thooku vilakku.jpg' %}" alt="" />
+                            </a>
+                            <div class="modal fade" id="5" tabindex="-1" role="dialog">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                                        <div class="modal-body">
+                                            <img src="{% static 'images/thooku vilakku.jpg' %}" alt="" />
+                                        </div>
+                                        <div class="col-md-12 description">
+                                            {% comment %} <h4>This is the 5 one on my Gallery</h4> {% endcomment %}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-6 co-xs-12 gal-item">
+                        <div class="box">
+                            <a href="#" data-toggle="modal" data-target="#9">
+                                <img src="{% static 'images/uruli polished.jpg' %}" alt="" />
+                            </a>
+                            <div class="modal fade" id="9" tabindex="-1" role="dialog">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                                        <div class="modal-body">
+                                            <img src="{% static 'images/uruli polished.jpg' %}" alt="" />
+                                        </div>
+                                        <div class="col-md-12 description">
+                                            {% comment %} <h4>This is the 6 one on my Gallery</h4> {% endcomment %}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-8 col-sm-12 co-xs-12 gal-item">
+                        <div class="box">
+                            <a href="#" data-toggle="modal" data-target="#10">
+                                <img src="{% static 'images/galary3.jpg' %}" alt="" />
+                            </a>
+                            <div class="modal fade" id="10" tabindex="-1" role="dialog">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                                        <div class="modal-body">
+                                            <img src="{% static 'images/galary3.jpg' %}" alt="" />
+                                        </div>
+                                        <div class="col-md-12 description">
+                                            {% comment %} <h4>This is the 7 one on my Gallery</h4> {% endcomment %}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-6 co-xs-12 gal-item">
+                        <div class="box">
+                            <a href="#" data-toggle="modal" data-target="#11">
+                                <img src="{% static 'images/galary4.jpg' %}" alt="" />
+                            </a>
+                            <div class="modal fade" id="11" tabindex="-1" role="dialog">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                                        <div class="modal-body">
+                                            <img src="{% static 'images/galary4.jpg' %}" alt="" />
+                                        </div>
+                                        <div class="col-md-12 description">
+                                            {% comment %} <h4>This is the 8 one on my Gallery</h4> {% endcomment %}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-6 co-xs-12 gal-item">
+                        <div class="box">
+                            <a href="#" data-toggle="modal" data-target="#12">
+                                <img src="{% static 'images/temple bell.jpg' %}" alt="" />
+                            </a>
+                            <div class="modal fade" id="12" tabindex="-1" role="dialog">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                                        <div class="modal-body">
+                                            <img src="{% static 'images/temple bell.jpg' %}" alt="" />
+                                        </div>
+                                        <div class="col-md-12 description">
+                                            {% comment %} <h4>This is the 9 one on my Gallery</h4> {% endcomment %}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-6 co-xs-12 gal-item">
+                        <div class="box">
+                            <a href="#" data-toggle="modal" data-target="#13">
+                                <img src="{% static 'images/galary5.jpg' %}" alt="" />
+                            </a>
+                            <div class="modal fade" id="13" tabindex="-1" role="dialog">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                                        <div class="modal-body">
+                                            <img src="{% static 'images/galary5.jpg' %}" alt="" />
+                                        </div>
+                                        <div class="col-md-12 description">
+                                            {% comment %} <h4>This is the 9 one on my Gallery</h4> {% endcomment %}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-6 co-xs-12 gal-item">
+                        <div class="box">
+                            <a href="#" data-toggle="modal" data-target="#14">
+                                <img src="{% static 'images/galary6.jpg' %}" alt="" />
+                            </a>
+                            <div class="modal fade" id="14" tabindex="-1" role="dialog">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                                        <div class="modal-body">
+                                            <img src="{% static 'images/galary6.jpg' %}" alt="" />
+                                        </div>
+                                        <div class="col-md-12 description">
+                                            {% comment %} <h4>This is the 9 one on my Gallery</h4> {% endcomment %}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-6 co-xs-12 gal-item">
+                        <div class="box">
+                            <a href="#" data-toggle="modal" data-target="#15">
+                                <img src="{% static 'images/galary7.jpg' %}" alt="" />
+                            </a>
+                            <div class="modal fade" id="15" tabindex="-1" role="dialog">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                                        <div class="modal-body">
+                                            <img src="{% static 'images/galary7.jpg' %}" alt="" />
+                                        </div>
+                                        <div class="col-md-12 description">
+                                            {% comment %} <h4>This is the 9 one on my Gallery</h4> {% endcomment %}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-6 co-xs-12 gal-item">
+                        <div class="box">
+                            <a href="#" data-toggle="modal" data-target="#16">
+                                <img src="{% static 'images/galary8.jpg' %}" alt="" />
+                            </a>
+                            <div class="modal fade" id="16" tabindex="-1" role="dialog">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                                        <div class="modal-body">
+                                            <img src="{% static 'images/galary8.jpg' %}" alt="" />
+                                        </div>
+                                        <div class="col-md-12 description">
+                                            {% comment %} <h4>This is the 9 one on my Gallery</h4> {% endcomment %}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-6 co-xs-12 gal-item">
+                        <div class="box">
+                            <a href="#" data-toggle="modal" data-target="#17">
+                                <img src="{% static 'images/galary9.jpg' %}" alt="" />
+                            </a>
+                            <div class="modal fade" id="17" tabindex="-1" role="dialog">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                                        <div class="modal-body">
+                                            <img src="{% static 'images/galary9.jpg' %}" alt="" />
+                                        </div>
+                                        <div class="col-md-12 description">
+                                            {% comment %} <h4>This is the 9 one on my Gallery</h4> {% endcomment %}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-6 co-xs-12 gal-item">
+                        <div class="box">
+                            <a href="#" data-toggle="modal" data-target="#18">
+                                <img src="{% static 'images/galary10.jpg' %}" alt="" />
+                            </a>
+                            <div class="modal fade" id="18" tabindex="-1" role="dialog">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                                        <div class="modal-body">
+                                            <img src="{% static 'images/galary10.jpg' %}" alt="" />
+                                        </div>
+                                        <div class="col-md-12 description">
+                                            {% comment %} <h4>This is the 9 one on my Gallery</h4> {% endcomment %}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-6 co-xs-12 gal-item">
+                        <div class="box">
+                            <a href="#" data-toggle="modal" data-target="#19">
+                                <img src="{% static 'images/galary11.jpg' %}" alt="" />
+                            </a>
+                            <div class="modal fade" id="19" tabindex="-1" role="dialog">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                                        <div class="modal-body">
+                                            <img src="{% static 'images/galary11.jpg' %}" alt="" />
+                                        </div>
+                                        <div class="col-md-12 description">
+                                            {% comment %} <h4>This is the 9 one on my Gallery</h4> {% endcomment %}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-6 co-xs-12 gal-item">
+                        <div class="box">
+                            <a href="#" data-toggle="modal" data-target="#20">
+                                <img src="{% static 'images/galary12.jpg' %}" alt="" />
+                            </a>
+                            <div class="modal fade" id="20" tabindex="-1" role="dialog">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                                        <div class="modal-body">
+                                            <img src="{% static 'images/galary12.jpg' %}" alt="" />
+                                        </div>
+                                        <div class="col-md-12 description">
+                                            {% comment %} <h4>This is the 9 one on my Gallery</h4> {% endcomment %}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-6 co-xs-12 gal-item">
+                        <div class="box">
+                            <a href="#" data-toggle="modal" data-target="#21">
+                                <img src="{% static 'images/galary13.jpg' %}" alt="" />
+                            </a>
+                            <div class="modal fade" id="21" tabindex="-1" role="dialog">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                                        <div class="modal-body">
+                                            <img src="{% static 'images/galary13.jpg' %}" alt="" />
+                                        </div>
+                                        <div class="col-md-12 description">
+                                            {% comment %} <h4>This is the 9 one on my Gallery</h4> {% endcomment %}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-6 co-xs-12 gal-item">
+                        <div class="box">
+                            <a href="#" data-toggle="modal" data-target="#22">
+                                <img src="{% static 'images/galary14.jpg' %}" alt="" />
+                            </a>
+                            <div class="modal fade" id="22" tabindex="-1" role="dialog">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                                        <div class="modal-body">
+                                            <img src="{% static 'images/galary14.jpg' %}" alt="" />
+                                        </div>
+                                        <div class="col-md-12 description">
+                                            {% comment %} <h4>This is the 9 one on my Gallery</h4> {% endcomment %}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-6 co-xs-12 gal-item">
+                        <div class="box">
+                            <a href="#" data-toggle="modal" data-target="#23">
+                                <img src="{% static 'images/galary15.jpg' %}" alt="" />
+                            </a>
+                            <div class="modal fade" id="23" tabindex="-1" role="dialog">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                                        <div class="modal-body">
+                                            <img src="{% static 'images/galary15.jpg' %}" alt="" />
+                                        </div>
+                                        <div class="col-md-12 description">
+                                            {% comment %} <h4>This is the 9 one on my Gallery</h4> {% endcomment %}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-6 co-xs-12 gal-item">
+                        <div class="box">
+                            <a href="#" data-toggle="modal" data-target="#24">
+                                <img src="{% static 'images/galary16.jpg' %}" alt="" />
+                            </a>
+                            <div class="modal fade" id="24" tabindex="-1" role="dialog">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                                        <div class="modal-body">
+                                            <img src="{% static 'images/galary16.jpg' %}" alt="" />
+                                        </div>
+                                        <div class="col-md-12 description">
+                                            {% comment %} <h4>This is the 9 one on my Gallery</h4> {% endcomment %}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-6 co-xs-12 gal-item">
+                        <div class="box">
+                            <a href="#" data-toggle="modal" data-target="#25">
+                                <img src="{% static 'images/galary18.jpg' %}" alt="" />
+                            </a>
+                            <div class="modal fade" id="25" tabindex="-1" role="dialog">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                                        <div class="modal-body">
+                                            <img src="{% static 'images/galary18.jpg' %}" alt="" />
+                                        </div>
+                                        <div class="col-md-12 description">
+                                            {% comment %} <h4>This is the 9 one on my Gallery</h4> {% endcomment %}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-6 co-xs-12 gal-item">
+                        <div class="box">
+                            <a href="#" data-toggle="modal" data-target="#26">
+                                <img src="{% static 'images/galary a.jpg' %}" alt="" />
+                            </a>
+                            <div class="modal fade" id="26" tabindex="-1" role="dialog">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                                        <div class="modal-body">
+                                            <img src="{% static 'images/galary a.jpg' %}" alt="" />
+                                        </div>
+                                        <div class="col-md-12 description">
+                                            {% comment %} <h4>This is the 9 one on my Gallery</h4> {% endcomment %}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-6 co-xs-12 gal-item">
+                        <div class="box">
+                            <a href="#" data-toggle="modal" data-target="#27">
+                                <img src="{% static 'images/galary b.jpg' %}" alt="" />
+                            </a>
+                            <div class="modal fade" id="27" tabindex="-1" role="dialog">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                                        <div class="modal-body">
+                                            <img src="{% static 'images/galary b.jpg' %}" alt="" />
+                                        </div>
+                                        <div class="col-md-12 description">
+                                            {% comment %} <h4>This is the 9 one on my Gallery</h4> {% endcomment %}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-6 co-xs-12 gal-item">
+                        <div class="box">
+                            <a href="#" data-toggle="modal" data-target="#28">
+                                <img src="{% static 'images/galary c.jpg' %}" alt="" />
+                            </a>
+                            <div class="modal fade" id="28" tabindex="-1" role="dialog">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                                        <div class="modal-body">
+                                            <img src="{% static 'images/galary c.jpg' %}" alt="" />
+                                        </div>
+                                        <div class="col-md-12 description">
+                                            {% comment %} <h4>This is the 9 one on my Gallery</h4> {% endcomment %}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-6 co-xs-12 gal-item">
+                        <div class="box">
+                            <a href="#" data-toggle="modal" data-target="#29">
+                                <img src="{% static 'images/Pitambari Shining Powder 100 Gms..jpg' %}" alt="" />
+                            </a>
+                            <div class="modal fade" id="29" tabindex="-1" role="dialog">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                                        <div class="modal-body">
+                                            <img src="{% static 'images/Pitambari Shining Powder 100 Gms..jpg' %}" alt="" />
+                                        </div>
+                                        <div class="col-md-12 description">
+                                            {% comment %} <h4>This is the 9 one on my Gallery</h4> {% endcomment %}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-6 co-xs-12 gal-item">
+                        <div class="box">
+                            <a href="#" data-toggle="modal" data-target="#30">
+                                <img src="{% static 'images/deepastambham.webp' %}" alt="" />
+                            </a>
+                            <div class="modal fade" id="30" tabindex="-1" role="dialog">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                                        <div class="modal-body">
+                                            <img src="{% static 'images/deepastambham.webp' %}" alt="" />
+                                        </div>
+                                        <div class="col-md-12 description">
+                                            {% comment %} <h4>This is the 9 one on my Gallery</h4> {% endcomment %}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-6 co-xs-12 gal-item">
+                        <div class="box">
+                            <a href="#" data-toggle="modal" data-target="#31">
+                                <img src="{% static 'images/puja set.jpg' %}" alt="" />
+                            </a>
+                            <div class="modal fade" id="31" tabindex="-1" role="dialog">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                                        <div class="modal-body">
+                                            <img src="{% static 'images/puja set.jpg' %}" alt="" />
+                                        </div>
+                                        <div class="col-md-12 description">
+                                            {% comment %} <h4>This is the 10 one on my Gallery</h4> {% endcomment %}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- end gal-container -->
+            </div>
+            <!-- end col -->
+        </div>
+        <!-- end row -->
+    </div>
+    <!-- end container -->
+</div>
+
+
+
+
+
+
+
+    {% comment %} <div id="reservation" class="reservations-main pad-top-100 pad-bottom-100">
+        <div class="container">
+            <div class="row">
+                <div class="form-reservations-box">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="wow fadeIn" data-wow-duration="1s" data-wow-delay="0.1s">
+                            <h2 class="block-title text-center">
+						Reservations			
+					</h2>
+                        </div>
+                        <h4 class="form-title">BOOKING FORM</h4>
+                        <p>PLEASE FILL OUT ALL REQUIRED* FIELDS. THANKS!</p>
+
+                        <form id="contact-form" method="post" class="reservations-box" name="contactform" action="mail.php">
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                <div class="form-box">
+                                    <input type="text" name="form_name" id="form_name" placeholder="Name" required="required" data-error="Firstname is required.">
+                                </div>
+                            </div>
+                            <!-- end col -->
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                <div class="form-box">
+                                    <input type="email" name="email" id="email" placeholder="E-Mail ID" required="required" data-error="E-mail id is required.">
+                                </div>
+                            </div>
+                            <!-- end col -->
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                <div class="form-box">
+                                    <input type="text" name="phone" id="phone" placeholder="contact no.">
+                                </div>
+                            </div>
+                            <!-- end col -->
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                <div class="form-box">
+                                    <select name="no_of_persons" id="no_of_persons" class="selectpicker">
+                                        <option selected disabled>No. Of persons</option>
+                                        <option>1</option>
+                                        <option>2</option>
+                                        <option>3</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <!-- end col -->
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                <div class="form-box">
+                                    <input type="text" name="date-picker" id="date-picker" placeholder="Date" required="required" data-error="Date is required." />
+                                </div>
+                            </div>
+                            <!-- end col -->
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                <div class="form-box">
+                                    <input type="text" name="time-picker" id="time-picker" placeholder="Time" required="required" data-error="Time is required." />
+                                </div>
+                            </div>
+                            <!-- end col -->
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                <div class="form-box">
+                                    <select name="preferred_food" id="preferred_food" class="selectpicker">
+                                        <option selected disabled>preferred food</option>
+                                        <option>Indian</option>
+                                        <option>Continental</option>
+                                        <option>Mexican</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <!-- end col -->
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                <div class="form-box">
+                                    <select name="occasion" id="occasion" class="selectpicker">
+                                        <option selected disabled>Occasion</option>
+                                        <option>Wedding</option>
+                                        <option>Birthday</option>
+                                        <option>Anniversary</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <!-- end col -->
+
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                <div class="reserve-book-btn text-center">
+                                    <button class="hvr-underline-from-center" type="submit" value="SEND" id="submit">BOOK MY TABLE </button>
+                                </div>
+                            </div>
+                            <!-- end col -->
+                        </form>
+                        <!-- end form -->
+                    </div>
+                    <!-- end col -->
+                </div>
+                <!-- end reservations-box -->
+            </div>
+            <!-- end row -->
+        </div>
+        <!-- end container -->
+    </div> {% endcomment %}
+    <!-- end reservations-main -->
+
+    <div id="footer" class="footer-main">
+        <div class="footer-news pad-top-100 pad-bottom-70 parallax">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="wow fadeIn" data-wow-duration="1s" data-wow-delay="0.1s">
+                            <h2 class="ft-title color-white text-center"> CONTACT </h2>
+                        </div>
+                        <center><img src="{% static 'images/whatsapp.png' %}" alt="" style="width:5%">
+                        </center>
+                        {% comment %} <form>
+                            <input type="email" placeholder="Enter your e-mail id">
+                            <a href="#" class="orange-btn"><i class="fa fa-paper-plane-o" aria-hidden="true"></i></a>
+                        </form> {% endcomment %}
+                    </div>
+                    <!-- end col -->
+                </div>
+                <!-- end row -->
+            </div>
+            <!-- end container -->
+        </div>
+        <!-- end footer-news -->
+        <div class="footer-box pad-top-70">
+            <div class="container">
+                <div class="row">
+                    <div class="footer-in-main">
+                        <div class="footer-logo">
+                            <div class="text-center">
+                                <img src="{% static 'images/prmlogo.png' %}" alt="" width="20%;" />
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                            <div class="footer-box-a">
+                                <h3>About Us</h3>
+                                <p>Originally hailed from  Thriunelvelli District, Tamil Nadu.</p>
+                                <ul class="socials-box footer-socials pull-left">
+                                    <li>
+                                        <a href="#">
+                                            <div class="social-circle-border"><i class="fa  fa-facebook"></i></div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <div class="social-circle-border"><i class="fa fa-twitter"></i></div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <div class="social-circle-border"><i class="fa fa-google-plus"></i></div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <div class="social-circle-border"><i class="fa fa-pinterest"></i></div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <div class="social-circle-border"><i class="fa fa-linkedin"></i></div>
+                                        </a>
+                                    </li>
+                                </ul>
+
+                            </div>
+                            <!-- end footer-box-a -->
+                        </div>
+                        <!-- end col -->
+                        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                            <div class="footer-box-b">
+                                <h3>Deal with</h3>
+                                <ul>
+                                    <li><a href="#">Brass Lamps </a></li>
+                                    <li><a href="#">Statues,Aranmulla mirror</a></li>
+                                    <li><a href="#">Vasthu villaku,Vellodu Uruli</a></li>
+                                    <li><a href="#">Hand made lamps, Sthamba Vilakku,Manichithrathazhu</a></li>
+                                    <li><a href="#">Puja set,Kindi,Thazhika kudam</a></li>
+                                    <li><a href="#">Gift items & Pithambari shining powder</a></li>
+
+
+
+                                </ul>
+                            </div>
+                            <!-- end footer-box-b -->
+                        </div>
+                        <!-- end col -->
+                        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                            <div class="footer-box-c">
+                                <h3>Contact Us</h3>
+                                <p>
+                                    <i class="fa fa-map-signs" aria-hidden="true"></i>
+                                    <span> N.J.K. Bldg.
+                                        Valanjambalam Devi Temple Jn,
+                                        S.A Road -Ravipuram Road,Ernakulam -682016
+                                    </span>
+                                </p>
+                                <p>
+                                    <i class="fa fa-mobile" aria-hidden="true"></i>
+                                    <span>
+                                        +91 9544884180<br>
+                                       +91 7907956226<br>
+                                       0484 -4042513<br>
+                                       0484 -2357733
+   
+                                   </span>
+                               
+								
+                                </p>
+                                <p>
+                                    <i class="fa fa-envelope" aria-hidden="true"></i>
+                                    <span><a href="#">prmmetalcrafts@gmail.com</a></span>
+                                </p>
+                            </div>
+                            <!-- end footer-box-c -->
+                        </div>
+                        <!-- end col -->
+                        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                            <div class="footer-box-d">
+                                <h3>Opening Hours</h3>
+
+                                <ul>
+                                    <li>
+                                        <p>Monday - Saturday </p>
+                                        <span> 10:00 AM - 8:00 PM</span>
+                                    </li>
+                                    <li>
+                                        <p>Sunday </p>
+                                        <span>Holiday</span>
+                                    </li>
+                                </ul>
+                            </div>
+                            <!-- end footer-box-d -->
+                        </div>
+                        <!-- end col -->
+                    </div>
+                    <!-- end footer-in-main -->
+                </div>
+                <!-- end row -->
+            </div>
+            <!-- end container -->
+            <div id="copyright" class="copyright-main">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            <h6 class="copy-title"> Copyright &copy; 2023 PRM is powered by <a href="" target="_blank">amaluprakash</a> </h6>
+                        </div>
+                    </div>
+                    <!-- end row -->
+                </div>
+                <!-- end container -->
+            </div>
+            <!-- end copyright-main -->
+        </div>
+        <!-- end footer-box -->
+    </div>
+    <!-- end footer-main -->
+
+    <a href="#" class="scrollup" style="display: none;">Scroll</a>
+
+    {% comment %} <section id="color-panel" class="close-color-panel">
+        <a class="panel-button gray2"><i class="fa fa-cog fa-spin fa-2x"></i></a>
+        <!-- Colors -->
+        <div class="segment">
+            <h4 class="gray2 normal no-padding">Color Scheme</h4>
+            <a title="orange" class="switcher orange-bg"></a>
+            <a title="strong-blue" class="switcher strong-blue-bg"></a>
+            <a title="moderate-green" class="switcher moderate-green-bg"></a>
+            <a title="vivid-yellow" class="switcher vivid-yellow-bg"></a>
+        </div>
+    </section> {% endcomment %}
+
+    <!-- ALL JS FILES -->
+    <script src="{% static 'js/all.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <!-- ALL PLUGINS -->
+    <script src="{% static 'js/custom.js' %}"></script>
+</body>
+
+</html>

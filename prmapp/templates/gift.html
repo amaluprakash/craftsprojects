@@ -1,0 +1,507 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous"> 
+
+    <!-- Basic -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <!-- Mobile Metas -->
+    <meta name="viewport" content="width=device-width, maximum-scale=1, initial-scale=1, user-scalable=0">
+
+    <!-- Site Metas -->
+    <title>prm</title>
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Site Icons -->
+    <link rel="shortcut icon" href="{% static 'images/favicon.ico' %}" type="image/x-icon" />
+    <link rel="apple-touch-icon" href="{%static 'images/apple-touch-icon.png' %}">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <!-- Site CSS -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <!-- Responsive CSS -->
+    <link rel="stylesheet" href="{% static 'css/responsive.css' %}">
+    <!-- color -->
+    <link id="changeable-colors" rel="stylesheet" href="{% static 'css/colors/orange.css' %}" />
+
+    <!-- Modernizer -->
+    <script src="{% static 'js/modernizer.js' %}"></script>
+
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <style>
+        /* Style The Dropdown Button */
+        .dropbtn {
+          /* background-color: #4CAF50; */
+          /* color: white; */
+          
+          font-size: 6px;
+          border: none;
+          cursor: pointer;
+        }
+        
+        /* The container <div> - needed to position the dropdown content */
+        .dropdown {
+            margin-top: 36%;
+          position: relative;
+          display: inline-block;
+        }
+        
+        /* Dropdown Content (Hidden by Default) */
+        .dropdown-content {
+          display: none;
+          position: absolute;
+          background-color: #1a1212;
+          min-width: 160px;
+          box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+          /* z-index: 1; */
+        }
+        
+        /* Links inside the dropdown */
+        .dropdown-content a {
+          color: black;
+          /* padding: 12px 16px; */
+          text-decoration: none;
+          display: block;
+        }
+        
+        /* Change color of dropdown links on hover */
+        .dropdown-content a:hover {background-color: #130808}
+        
+        /* Show the dropdown menu on hover */
+        .dropdown:hover .dropdown-content {
+          display: block;
+        }
+        
+        /* Change the background color of the dropdown button when the dropdown content is shown */
+        .dropdown:hover .dropbtn {
+          background-color: #811410;
+        }
+        </style>
+
+        
+        <style>
+        .subnav {
+            float: left;
+            overflow: hidden;
+          }
+          
+          .subnav .subnavbtn {
+            font-size: 18px;  
+            border: none;
+            outline: none;
+            color: white;
+            padding: 14px 16px;
+            background-color: inherit;
+            font-family: inherit;
+            margin-top:22px;
+          }
+          
+          .navbar a:hover, .subnav:hover .subnavbtn {
+            background-color: rgb(141, 16, 5);
+          }
+          
+          .subnav-content {
+            
+            font-size: 10px;
+            display: none;
+            position: absolute;
+            left: 0;
+            background-color: rgb(37, 10, 8);
+            width: 100%;
+            z-index: 1;
+          }
+          
+          .subnav-content a {
+            margin-top:60px;
+            float: left;
+            color: white;
+            text-decoration: none;
+          }
+          
+          .subnav-content a:hover {
+            background-color: #eee;
+            color: black;
+          }
+          
+          .subnav:hover .subnav-content {
+            display: block;
+          }
+          </style>
+          <script>
+            function openNav() {
+              document.getElementById("myNav").style.height = "100%";
+            }
+            
+            function closeNav() {
+              document.getElementById("myNav").style.height = "0%";
+            }
+            </script>
+<style>
+.overlay {
+  height: 0%;
+  width: 100%;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  padding-left:50px;
+  padding-right:50px;
+  background-color: rgb(0,0,0);
+  background-color: rgba(0,0,0, 0.9);
+  overflow-y: hidden;
+  transition: 0.5s;
+}
+
+.overlay-content {
+  position: relative;
+  top: 25%;
+  width: 100%;
+  text-align: center;
+  margin-top:50px;
+}
+
+.overlay a {
+  padding-left: 8px;
+  text-decoration: none;
+  font-size: 26px;
+  color: #c5de0b;
+  display: block;
+  transition: 0.3s;
+}
+
+.overlay a:hover, .overlay a:focus {
+  color: #570909fe;
+}
+
+.overlay .closebtn {
+  position: absolute;
+  margin-top: -5px;
+  right: 45px;
+  font-size: 60px;
+}
+
+@media screen and (max-height: 450px) {
+  .overlay {overflow-y: auto;}
+  .overlay a {font-size: 20px}
+  .overlay .closebtn {
+  font-size: 40px;
+  top: 15px;
+  right: 35px;
+  }
+}
+            </style>
+
+</head>
+
+<body>
+    <div id="loader">
+        <div id="status"></div>
+    </div>
+    <div id="site-header">
+        <header id="header" class="header-block-top">
+            <div class="container-fluid ">
+                <div class="row">
+                    <div class="main-menu">
+                        <!-- navbar -->
+                        <nav class="navbar navbar-expand-lg navbar-light bg-black" id="mainNav">
+                            <div class="navbar-header">
+                                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                                    <span class="sr-only">Toggle navigation</span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                </button>
+                                <div class="logo">
+                                    <a class="navbar-brand js-scroll-trigger logo-header" href="{% url 'index' %}">
+                                        <img src="{% static 'images/prmlogo.png' %}" alt="" width="30%">
+                                    </a>
+                                </div>
+                            </div>
+                            <div id="navbar" class="navbar-collapse collapse">
+                                <ul class="nav navbar-nav navbar-right">
+                                    <li class="active"><a href="{% url 'index' %}">Home</a></li>
+                                    {% comment %} <li><a href="#about">About us</a></li> {% endcomment %}
+                                    {% comment %} <li><a href="#gallery">Gallery</a></li> {% endcomment %}
+                                    <div class="subnav">
+                                        <button class="subnavbtn" onclick="openNav()">Products <i class="fa fa-caret-down"></i></button>
+                                        <div class="subnav-content overlay" id="myNav" >
+                                            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                                            <a href="arathi">Arathi &nbsp;&nbsp;&nbsp;&nbsp;</a>
+                                    
+                                            <a href="vilakku">Vilakku &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+                                            <a href="bell">Bell &nbsp;&nbsp;&nbsp;&nbsp;</a>
+                                            <a href="statue">Brass statue &nbsp;&nbsp;&nbsp;&nbsp;</a>
+                                            <a href="para">Para / Edangazhi / Nazhi &nbsp;&nbsp;&nbsp;&nbsp;</a>
+                                            <a href="chain">Brass Chain/Hook/Washer Etc.&nbsp;&nbsp;&nbsp;&nbsp;</a>
+                                            <a href="gift">Gift Items&nbsp;&nbsp;&nbsp;&nbsp;</a>
+                                            <a href="house">Household Items
+                                                &nbsp;&nbsp;&nbsp;&nbsp;</a>
+
+                                            <a href="medal">Momento/Trophy/Medal
+                                                &nbsp;&nbsp;&nbsp;&nbsp;</a>
+                                            <!-- <a href="valkanadi">valkanadi &nbsp;&nbsp;&nbsp;&nbsp;</a> -->
+                                            <a href="music">Musical Item&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+                                            <a href="photo">Photo With/Without Frame  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+                                            <a href="plate">plate &nbsp;&nbsp;&nbsp;&nbsp;</a>
+                                            <!-- <a href="#">Wooden crafts&nbsp;&nbsp;&nbsp;&nbsp;</a> -->
+                                            <a href="polish">Polishing/Cleaning/Packing Items&nbsp;&nbsp;&nbsp;&nbsp;</a>
+                                            <a href="pooja">Pooja Items&nbsp;&nbsp;&nbsp;&nbsp;</a>
+                                            <a href="stand">stand&nbsp;&nbsp;&nbsp;&nbsp;</a>
+                                            <a href="temple">Temple items&nbsp;&nbsp;&nbsp;&nbsp;</a>
+                                            <a href="utensils">Utensils - Brass, Copper, Steel & Aluminium
+                                            &nbsp;&nbsp;&nbsp;&nbsp;</a>
+
+                                            <!-- <a href="#">Church bells&nbsp;&nbsp;&nbsp;&nbsp;</a> -->
+                                        </div>
+                                      </div>
+                                    
+                                    
+                                    {% comment %} <li><a href="#footer">Contact us</a></li> {% endcomment %}
+                                    <li><a href="all">All Products</a></li>
+
+                                </ul>
+                            </div>
+                            <!-- end nav-collapse -->
+                        </nav>
+                        <!-- end navbar -->
+                    </div>
+                </div>
+                <!-- end row -->
+            </div>
+            <!-- end container-fluid -->
+        </header>
+        <!-- end header -->
+    </div>
+	<!-- end site-header -->
+	
+
+    <div class="fluid-container " style="margin-top:10%;"  >
+        <section class="bg-light p-2">
+        <div class="container">
+            <div class="row row-cols-auto my-5">
+                {% for log in log %}
+                <table class="card  ms-5 col " style="width:28rem;">
+                
+
+                  <thead>
+                    <th>
+                        <tr>
+                        {% if log.file %}
+                        <td>
+                            <img src="{{log.file.url}}" class="card-img-top" style="width: 100%;">
+                        </td>
+                        {% endif %}
+                        </tr>
+                    </th>
+                
+                <tr>
+                  <td scope="col"><b>Name:&nbsp;: &nbsp; </b>{{log.name}}</td>
+
+              </tr>
+                      {% comment %} <tr>
+                          <td scope="col"><b>Description: &nbsp;: &nbsp; </b>{{log.description}}</td>
+
+                      </tr> {% endcomment %}
+                    
+                  </thead>
+                  <tbody>
+                      
+                  {% endfor %}
+
+              </table>
+              
+             
+              <!------ Include the above in your HEAD tag ---------->
+              <br>  
+                </div>
+              </div>
+             
+</section>
+            </div>
+            <div id="footer" class="footer-main">
+                <div class="footer-news pad-top-100 pad-bottom-70 parallax">
+                    <div class="container">
+                        <div class="row">
+                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                <div class="wow fadeIn" data-wow-duration="1s" data-wow-delay="0.1s">
+                                    <h2 class="ft-title color-white text-center"> CONTACT </h2>
+                                </div>
+                                <center><img src="{% static 'images/whatsapp.png' %}" alt="" style="width:5%">
+                                </center>
+                                {% comment %} <form>
+                                    <input type="email" placeholder="Enter your e-mail id">
+                                    <a href="#" class="orange-btn"><i class="fa fa-paper-plane-o" aria-hidden="true"></i></a>
+                                </form>  {% endcomment %}
+                            </div> 
+                            <!-- end col -->
+                        </div>
+                        <!-- end row -->
+                    </div>
+                    <!-- end container -->
+                </div>
+                <!-- end footer-news -->
+                <div class="footer-box pad-top-70">
+                    <div class="container">
+                        <div class="row">
+                            <div class="footer-in-main">
+                                <div class="footer-logo">
+                                    <div class="text-center">
+                                        <img src="{% static 'images/prmlogo.png' %}" alt="" width="30%"/>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                                    <div class="footer-box-a">
+                                        <h3>About Us</h3>
+                                        <p>Originally hailed from Thriunelvelli District, Tamil Nadu.</p>
+                                        <ul class="socials-box footer-socials pull-left">
+                                            <li>
+                                                <a href="#">
+                                                    <div class="social-circle-border"><i class="fa  fa-facebook"></i></div>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#">
+                                                    <div class="social-circle-border"><i class="fa fa-twitter"></i></div>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#">
+                                                    <div class="social-circle-border"><i class="fa fa-google-plus"></i></div>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#">
+                                                    <div class="social-circle-border"><i class="fa fa-pinterest"></i></div>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#">
+                                                    <div class="social-circle-border"><i class="fa fa-linkedin"></i></div>
+                                                </a>
+                                            </li>
+                                        </ul>
+        
+                                    </div>
+                                    <!-- end footer-box-a -->
+                                </div>
+                                <!-- end col -->
+                                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                                    <div class="footer-box-b">
+                                        <h3>Deal with</h3>
+                                        <ul>
+                                            <li><a href="#">Brass Lamp </a></li>
+                                            <li><a href="#">Statues,Aranmulla mirror</a></li>
+                                            <li><a href="#">Vasthu villaku,Vellodu Uruli</a></li>
+                                            <li><a href="#">Hand made lamps, Sthamba Vilakku,Manichithrathazhu</a></li>
+                                            <li><a href="#">Puja set,Kindi,Thazhika kudam</a></li>
+                                            <li><a href="#">Gift items & Pithambari shining powder</a></li>
+        
+        
+                                        </ul>
+                                    </div>
+                                    <!-- end footer-box-b -->
+                                </div>
+                                <!-- end col -->
+                                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                                    <div class="footer-box-c">
+                                        <h3>Contact Us</h3>
+                                        <p>
+                                            <i class="fa fa-map-signs" aria-hidden="true"></i>
+                                            <span> N.J.K. Bldg.
+                                                Valanjambalam Devi Temple Jn,
+                                                S.A Road -Ravipuram Road,Ernakulam -682016
+                                            </span>
+                                        </p>
+                                        <p>
+                                            <i class="fa fa-mobile" aria-hidden="true"></i>
+                                            <span>
+                                                +91 9544884180<br>
+                                               +91 7907956226<br>
+                                               0484 -4042513<br>
+                                               0484 -2357733
+           
+                                           </span>
+                                       
+                                        
+                                        </p>
+                                        <p>
+                                            <i class="fa fa-envelope" aria-hidden="true"></i>
+                                            <span><a href="#">prmmetalcrafts@gmail.com</a></span>
+                                        </p>
+                                    </div>
+                                    <!-- end footer-box-c -->
+                                </div>
+                                <!-- end col -->
+                                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                                    <div class="footer-box-d">
+                                        <h3>Opening Hours</h3>
+        
+                                        <ul>
+                                            <li>
+                                                <p>Monday - Saturday </p>
+                                                <span> 10:00 AM - 8:00 PM</span>
+                                            </li>
+                                            <li>
+                                                <p>Sunday </p>
+                                                <span>Holiday</span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <!-- end footer-box-d -->
+                                </div>
+                                <!-- end col -->
+                            </div>
+                            <!-- end footer-in-main -->
+                        </div>
+                        <!-- end row -->
+                    </div>
+                    <!-- end container -->
+                    <div id="copyright" class="copyright-main">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                    <h6 class="copy-title"> Copyright &copy; 2023 PRM is powered by <a href="" target="_blank">amaluprakash</a> </h6>
+                                </div>
+                            </div>
+                            <!-- end row -->
+                        </div>
+                        <!-- end container -->
+                    </div>
+                    <!-- end copyright-main -->
+                </div>
+                <!-- end footer-box -->
+            </div>
+            <!-- end footer-main -->
+        
+            <a href="#" class="scrollup" style="display: none;">Scroll</a>
+        
+            {% comment %} <section id="color-panel" class="close-color-panel">
+                <a class="panel-button gray2"><i class="fa fa-cog fa-spin fa-2x"></i></a>
+                <!-- Colors -->
+                <div class="segment">
+                    <h4 class="gray2 normal no-padding">Color Scheme</h4>
+                    <a title="orange" class="switcher orange-bg"></a>
+                    <a title="strong-blue" class="switcher strong-blue-bg"></a>
+                    <a title="moderate-green" class="switcher moderate-green-bg"></a>
+                    <a title="vivid-yellow" class="switcher vivid-yellow-bg"></a>
+                </div>
+            </section> {% endcomment %}
+        
+            <!-- ALL JS FILES -->
+            <script src="{% static 'js/all.js' %}"></script>
+            <script src="{% static 'js/bootstrap.min.js' %}"></script>
+            <!-- ALL PLUGINS -->
+            <script src="{% static 'js/custom.js' %}"></script>
+       
+</body>
+</html>

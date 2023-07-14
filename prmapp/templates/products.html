@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+</head>
+<body>
+    <div class="container mt-5">
+    <form class="row g-3" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="col-md-4">
+          <label for="validationDefault01" class="form-label">Add image</label>
+          <input type="file" class="form-control" name="file" id="validationDefault01" required>
+        </div>
+        <div class="col-md-4">
+          <label for="validationDefault02" class="form-label">Product name</label>
+          <input type="text" class="form-control" name="name" id="validationDefault02"  required>
+        </div>
+        
+        <div class="col-md-6">
+          <label for="validationDefault03" class="form-label">Description</label>
+          <input type="text" class="form-control" name="description"id="validationDefault03" required>
+        </div>
+        <div class="col-md-6">
+          <label for="validationDefault03" class="form-label">type</label>
+          <input type="text" class="form-control" name="role"id="validationDefault03" required>
+        </div>
+        <div class="col-12">
+          <button class="btn btn-primary" type="submit">Submit form</button>
+        </div>
+      </form>
+    </div>
+</body>
+</html>
